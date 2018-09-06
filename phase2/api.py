@@ -18,13 +18,14 @@ def login(username, password):
 
 
 def create_issue(summary):
-    new_issue = requests.post(jiraUrl + "/rest/api/2/issue", data=json.dumps(my_json.create_issue(summary)),
+    new_issue = requests.post(jiraUrl + "/rest/api/2/issue", data=json.dumps(my_json.create_json_for_issue(summary)),
                               headers=headers, auth=(user, password))
     issue_id.append(new_issue.json().get("id"))
+    print(issue_id)
     return new_issue.status_code
 
 
-def delete_issues():
-    issue_id.clear()
 
-print(issue_id)
+def delete_issue():
+
+

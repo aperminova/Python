@@ -12,5 +12,7 @@ class TestLogin:
         assert login(username, password) == expected
 
     def test_create_issue(self):
-         assert create_issue("Alisa") == 201
+        for i in range(0, 5):
+            assert create_issue("Alisa Test" + str(i)) == 201
+
 

@@ -1,7 +1,6 @@
 class JsonFixtures:
 
-
-    def create_issue(self, summary="Alisa Test Post"):
+    def create_json_for_issue(self, summary):
         json = {
             "fields": {
                 "project":
@@ -16,4 +15,3 @@ class JsonFixtures:
             }
         }
         return json
-
