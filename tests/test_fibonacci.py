@@ -1,4 +1,4 @@
-from phase1.fibonacci import fib
+from fibo.fibonacci import fib
 
 
 class TestClass(object):
