@@ -2,6 +2,7 @@ import requests
 import json
 from json_fix.json_fixtures import JsonFixtures
 
+
 my_json = JsonFixtures()
 
 jiraUrl = 'http://jira.hillel.it:8080'
@@ -11,7 +12,10 @@ password = "Alisa_Perminova"
 issue_id = []
 
 
+
+
 class Login:
+
 
     def login(self, username, password):
         result = requests.get(jiraUrl, auth=(username, password))
@@ -19,6 +23,8 @@ class Login:
 
 
 class Api:
+
+    j = 1
 
     def create_issue(self, summary, assignee, priority):
         new_issue = requests.post(jiraUrl + "/rest/api/2/issue",
@@ -49,3 +55,10 @@ class Api:
     def delete_issue(self):
         for id in issue_id:
             requests.delete(jiraUrl + "/rest/api/2/issue/" + str(id), auth=(user, password))
+
+    def rerun(self):
+        if  self.j == 1:
+            self.j += 1
+            return 1
+        else:
+            return self.j

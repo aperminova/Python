@@ -1,8 +1,10 @@
 from api.jira_api import *
 import pytest
 
+
 auth = Login()
 api = Api()
+
 
 
 class TestLogin:
@@ -47,3 +49,6 @@ class TestIssues:
 
     def test_search_0_issues(self):
         assert api.search_issue("abcdefghjklmno") is 0
+
+    def test_rerun(self):
+        assert api.rerun() == 2
