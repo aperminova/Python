@@ -12,10 +12,7 @@ password = "Alisa_Perminova"
 issue_id = []
 
 
-
-
 class Login:
-
 
     def login(self, username, password):
         result = requests.get(jiraUrl, auth=(username, password))

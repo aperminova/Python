@@ -9,5 +9,5 @@ pytest-forked==0.2
 pytest-rerunfailures==4.1
 pytest-xdist==1.23.0
 requests==2.19.1
+selenium==3.14.1
 six==1.11.0
-
