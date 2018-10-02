@@ -45,7 +45,6 @@ class IssuesPage(BasePage):
         search_field.clear()
         search_field.send_keys(query)
         search_field.submit()
-        #sleep(5)
         issues_list = self.driver.find_elements(*self.issue_list_locator)
         return len(issues_list)
 
@@ -53,7 +52,6 @@ class IssuesPage(BasePage):
         edit_btn = self.get_element(self.edit_button_locator)
         self.wait_visible(edit_btn)
         edit_btn.click()
-        #sleep(5)
 
     def update_summary(self, summary):
         summary_field = self.get_element(self.summary_locator)
@@ -81,7 +79,6 @@ class IssuesPage(BasePage):
         update_btn.click()
         issue_updated_message = self.get_element(self.issue_updated_message_locator)
         self.wait_invisible(issue_updated_message)
-        #sleep(6)
 
 
 
