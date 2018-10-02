@@ -12,3 +12,4 @@ pytest-xdist==1.23.0
 requests==2.19.1
 selenium==3.14.1
 six==1.11.0
+webdriver-manager==1.7
