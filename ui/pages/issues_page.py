@@ -13,7 +13,6 @@ class IssuesPage(BasePage):
     assignee_field_locator = (By.ID, "assignee-field")
     issue_list_locator = (By.CSS_SELECTOR, ".issue-list li")
     issue_updated_message_locator = (By.CSS_SELECTOR, ".aui-message.aui-message-success.success.closeable.shadowed.aui-will-close")
-
     create_submit_button_locator = (By.ID, "create-issue-submit")
     edit_button_locator = (By.CSS_SELECTOR, ".trigger-label")
     update_button_locator = (By.ID, "edit-issue-submit")
