@@ -9,13 +9,10 @@ jiraUrl = 'http://jira.hillel.it:8080'
 headers = {'Content-Type': 'application/json'}
 user = "Alisa_Perminova"
 password = "Alisa_Perminova"
-issue_id = []
-
-
+issue_id_list = []
 
 
 class Login:
-
 
     def login(self, username, password):
         result = requests.get(jiraUrl, auth=(username, password))
@@ -33,12 +30,12 @@ class Api:
         if new_issue.status_code != 201:
             return new_issue.status_code
         else:
-            issue_id.append(new_issue.json().get("id"))
+            issue_id_list.append(new_issue.json().get("id"))
         return new_issue.status_code
 
-    def create_issues(self):
+    def create_issues(self, sample):
         for i in range(5):
-            self.create_issue("Alisa Test-" + str(i), "Alisa_Perminova", "High")
+            self.create_issue(sample + str(i), "Alisa_Perminova", "High")
 
     def search_issue(self, summary):
         requested_issues = requests.post(jiraUrl + "/rest/api/2/search",
@@ -46,18 +43,18 @@ class Api:
                                          auth=(user, password))
         return requested_issues.json().get('total')
 
-    def update_issue(self, summary, assignee, priority, id):
-        updated_issue = requests.put(jiraUrl + "/rest/api/2/issue/" + id,
+    def update_issue(self, summary, assignee, priority, issue_id):
+        updated_issue = requests.put(jiraUrl + "/rest/api/2/issue/" + issue_id,
                                      data=json.dumps(my_json.create_json_for_issue(summary, assignee, priority)),
                                      headers=headers, auth=(user, password))
         return updated_issue.status_code
 
     def delete_issue(self):
-        for id in issue_id:
-            requests.delete(jiraUrl + "/rest/api/2/issue/" + str(id), auth=(user, password))
+        for issue_id in issue_id_list:
+            requests.delete(jiraUrl + "/rest/api/2/issue/" + str(issue_id), auth=(user, password))
 
     def rerun(self):
-        if  self.j == 1:
+        if self.j == 1:
             self.j += 1
             return 1
         else:

@@ -1,6 +1,7 @@
 chardet==3.0.4
 colorama==0.3.9
 idna==2.7
+jira==2.0.0
 more-itertools==4.3.0
 pluggy==0.7.1
 py==1.5.4
@@ -9,5 +10,6 @@ pytest-forked==0.2
 pytest-rerunfailures==4.1
 pytest-xdist==1.23.0
 requests==2.19.1
+selenium==3.14.1
 six==1.11.0
-
+webdriver-manager==1.7
