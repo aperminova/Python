@@ -1,3 +1,5 @@
+allure-pytest==2.5.2
+allure-python-commons==2.5.2
 chardet==3.0.4
 colorama==0.3.9
 idna==2.7

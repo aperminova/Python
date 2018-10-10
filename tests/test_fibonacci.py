@@ -1,6 +1,8 @@
 from fibo.fibonacci import fib
+import pytest
 
 
+@pytest.mark.fibonacci
 class TestClass(object):
 
     def test_n_equals_negative_number(self):

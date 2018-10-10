@@ -4,6 +4,9 @@ from ui.pages.issues_page import IssuesPage
 from api.jira_api import Api
 import pytest
 from jira import JIRA
+import allure
+from allure_commons.types import AttachmentType
+
 
 url = "http://jira.hillel.it:8080"
 user = "Alisa_Perminova"
@@ -11,6 +14,7 @@ password = "Alisa_Perminova"
 api = Api()
 
 
+@pytest.mark.ui
 class TestLoginUi:
 
     def setup_method(self):
@@ -34,6 +38,7 @@ class TestLoginUi:
         self.driver.close()
 
 
+@pytest.mark.ui
 class TestIssuesUi:
 
     def setup_class(cls):
@@ -84,4 +89,7 @@ class TestIssuesUi:
         self.issues_page.update_priority("Blocker")
         self.issues_page.update_assignee(user)
         self.issues_page.click_update_button()
+
+        allure.attach(self.driver.get_screenshot_as_png(), name="Updated issue",
+                      attachment_type=AttachmentType.PNG)
         assert self.issues_page.search_issue("Updated summary UI") == 1
