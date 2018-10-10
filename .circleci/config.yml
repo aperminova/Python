@@ -2,21 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-
      - image: circleci/python:3.7.0-stretch-browsers
-
-
 
     working_directory: ~/repo
 
     steps:
     - checkout
 
-
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "requirements.txt" }}
-
         - v1-dependencies-
 
     - run:
@@ -27,11 +22,11 @@ jobs:
           pip install -r requirements.txt
 
    - run:
-           name: install allure
-           command: |
-             curl -o allure-2.7.0.zip -Ls https://bintray.com/qameta/generic/download_file?file_path=io%2Fqameta%2Fallure%2Fallure%2F2.7.0%2Fallure-2.7.0.zip
-             unzip allure-2.7.0.zip
-             chmod -R 777 ./allure-2.7.0/bin/
+       name: install allure
+       command: |
+           curl -o allure-2.7.0.zip -Ls https://bintray.com/qameta/generic/download_file?file_path=io%2Fqameta%2Fallure%2Fallure%2F2.7.0%2Fallure-2.7.0.zip
+           unzip allure-2.7.0.zip
+           chmod -R 777 ./allure-2.7.0/bin/
 
     - save_cache:
         paths:
@@ -42,14 +37,13 @@ jobs:
         name: run tests
         command: |
           . venv/bin/activate
-          pytest -v -n 4 --dist=loadscope --reruns 2 --alluredir=/tmp/test-reports
+          pytest -v -n 4 --dist=loadscope --reruns 2 --alluredir=/tmp/test-results
 
-
-  - run:
-          name: generate report
-          command: |
-            ./allure-2.7.0/bin/allure generate -c /tmp/test-reports -o /tmp/allure_report
-          when: always
+    - run:
+        name: generate report
+        command: |
+            ./allure-2.7.0/bin/allure generate -c /tmp/test-results -o /tmp/allure_report
+        when: always
 
 
     - store_artifacts:
