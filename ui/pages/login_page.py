@@ -12,22 +12,16 @@ class LoginPage(BasePage):
     intro_locator = (By.CSS_SELECTOR, ".intro")
     error_login_locator = (By.CSS_SELECTOR, ".aui-message.error")
 
-    @allure.step('Fill login field')
-    def fill_login_field(self, user):
+    @allure.step('Fill login and password, click "Login" button')
+    def login_procedure(self, user, password):
         username_field = self.get_element(self.username_locator)
         self.wait_visible(username_field)
         username_field.clear()
         username_field.send_keys(user)
-
-    @allure.step('Fill password field')
-    def fill_password_field(self, password):
         password_field = self.get_element(self.password_locator)
         self.wait_visible(password_field)
         password_field.clear()
         password_field.send_keys(password)
-
-    @allure.step('Click "Login" button')
-    def click_login_button(self):
         login_btn = self.get_element(self.login_button_locator)
         self.wait_visible(login_btn)
         login_btn.click()

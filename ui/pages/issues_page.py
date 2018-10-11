@@ -31,12 +31,9 @@ class IssuesPage(BasePage):
         summary_field.clear()
         summary_field.send_keys(summary)
         submit_issue_btn = self.get_element(self.create_submit_button_locator)
-
         self.wait_visible(submit_issue_btn)
-
         submit_issue_btn.click()
         sleep(5)
-
 
     @allure.step("Check that issue created successfully without errors")
     def issue_created(self):
