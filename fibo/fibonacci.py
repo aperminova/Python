@@ -1,9 +1,12 @@
+import allure
+
 def main():
     print(fib(20))
     print(fib(-5))
     print(fib(1))
 
 
+@allure.step('Generate Fibonacci sequence')
 def fib(n):
     if n <= 0:
         return "Please enter positive number to generate sequence"
