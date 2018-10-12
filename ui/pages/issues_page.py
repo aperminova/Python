@@ -49,6 +49,7 @@ class IssuesPage(BasePage):
         search_field.clear()
         search_field.send_keys(query)
         search_field.submit()
+        sleep(5)
         issues_list = self.driver.find_elements(*self.issue_list_locator)
         return len(issues_list)
 

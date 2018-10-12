@@ -33,11 +33,11 @@ def get_login_page(request):
 def pytest_runtest_makereport(item):
     outcome = yield
     rep = outcome.get_result()
-    if 'get_driver' in item.fixturenames:
-        driver = item.instance.driver
-        if rep.when == "call" and rep.failed or rep.skipped:
-            try:
-                allure.attach(driver.get_screenshot_as_png(), name=item.name,
+    # if 'get_driver' in item.fixturenames:
+    #     driver = item.instance.driver
+    if rep.when == "call" and rep.failed or rep.skipped:
+        try:
+            allure.attach(driver.get_screenshot_as_png(), name=item.name,
                               attachment_type=allure.attachment_type.PNG)
-            except Exception as e:
-                print(e)
+        except Exception as e:
+            print(e)
