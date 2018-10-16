@@ -2,7 +2,6 @@ from ui.pages.login_page import LoginPage
 from ui.pages.issues_page import IssuesPage
 from api.jira_api import Api
 import pytest
-#from jira import JIRA
 import allure
 from allure_commons.types import AttachmentType
 
@@ -30,15 +29,6 @@ class TestLoginUi:
 @pytest.mark.usefixtures("prepare_issues_ui", "get_driver", "get_url")
 @pytest.mark.ui
 class TestIssuesUi:
-    #def setup_class(cls):
-     #   api.create_issues("Alisa UI issue-")
-
-
-    # def teardown_class(cls):
-    #     jira = JIRA(basic_auth=(user, password), server=url)
-    #     issues = jira.search_issues("reporter=Alisa_Perminova")
-    #     for issue in issues:
-    #         issue.delete()
 
     @allure.title('Create issue UI test')
     @pytest.mark.parametrize("summary, expected", [

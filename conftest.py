@@ -52,6 +52,7 @@ def prepare_issues_api():
     yield
     api.clean_up()
 
+
 @pytest.fixture(scope="class")
 def prepare_issues_ui():
     api = Api()
