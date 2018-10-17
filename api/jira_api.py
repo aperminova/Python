@@ -53,8 +53,13 @@ class Api:
                                      headers=headers, auth=(user, password))
         return updated_issue.status_code
 
+    @allure.step('Delete issue by ID using JIRA REST API')
+    def delete_issue(self, issue_id):
+        deleted_issue = requests.delete(jiraUrl + "/rest/api/2/issue/" + issue_id, auth=(user, password))
+        return deleted_issue.status_code
+
     @allure.step('Delete issues using JIRA REST API')
-    def delete_issue(self):
+    def clean_up(self):
         for issue_id in issue_id_list:
             requests.delete(jiraUrl + "/rest/api/2/issue/" + str(issue_id), auth=(user, password))
 

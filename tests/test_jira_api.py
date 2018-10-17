@@ -21,14 +21,9 @@ class TestLoginApi:
         assert auth.login(username, password) == expected
 
 
+@pytest.mark.usefixtures("prepare_issues_api")
 @pytest.mark.api
 class TestIssuesApi:
-
-    def setup_class(cls):
-        api.create_issues("Alisa_API_issue-")
-
-    def teardown_class(cls):
-        api.delete_issue()
 
     @allure.title('Create issue with correct data')
     def test_create_issue_api(self):
@@ -57,6 +52,10 @@ class TestIssuesApi:
     @allure.title('Search issue with non-exist summary API')
     def test_search_0_issues(self):
         assert api.search_issue("abcdefghjklmno") is 0
+
+    @allure.title('Delete issue API')
+    def test_delete_issue(self):
+        assert api.delete_issue(issue_id_list[5]) == 204
 
 
 @pytest.mark.rerun
